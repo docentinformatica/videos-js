@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Inclusió de codi JavaScript intern</title>
+  <script>
+    // Accedir al DOM sense esperar a l'esdeveniment DOMContentLoaded o load, mitjançant codi JavaScript intern a dins del head provoca un error ja que en aquest punt el DOM encara no s'ha carregat.
+    // document.getElementById("titol").innerText = "Inclusió de codi JavaScript intern.";
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+      alert("El DOM s'ha carregat.");
+    });
+
+    function inclusioJavaScriptIntern() {
+      alert("Inclusió de codi JavaScript intern.")
+      document.getElementById("titol").innerText = "Inclusió de codi JavaScript intern.";
+    }
+
+    function botoClicat(buttonElement) {
+      buttonElement.innerText = 'Botó clicat';
+      buttonElement.style.color = 'white';
+      buttonElement.style.backgroundColor = '#aa65c3';
+      alert('El botó s\'ha clicat.');
+    }
+  </script>
+</head>
+
+<body onload="inclusioJavaScriptIntern()">
+
+  <h1 id="titol">...</h1>
+  <button onclick="botoClicat(this)">
+    Botó sense clicar
+  </button>
+  <script>
+    // La inclusió de codi JavaScript intern tot just abans de l'etiqueta de tancament del body, permet accedir al DOM sense provocar un error ja que en aquest punt ja s'ha carregat.
+    //document.getElementById("titol").innerText = "Inclusió de codi JavaScript intern.";
+  </script>
+</body>
+
+</html>

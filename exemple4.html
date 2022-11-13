@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Exemples de funcionalitat diversos</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const llistaFruites = document.getElementById("llistaFruites");   
+      const fruites = ["Albercoc", "Alvocat", "Caqui", "Cirera", "Codony", "Figa"];
+      for (let nomFruita of fruites) {
+        const li = document.createElement("li");
+        li.innerText = nomFruita;
+        llistaFruites.appendChild(li);
+      }
+
+      const textConfidencial = document.getElementById("infoConfidencial");
+      textConfidencial.style.color = "darkgreen";
+      textConfidencial.style.fontSize = "26px";
+      textConfidencial.addEventListener("copy", function (event) {
+        event.preventDefault();
+        alert("No estàs autoritzat a copiar el text.");
+      });
+
+      document.getElementsByTagName("form")[0].addEventListener("submit", function (event) {
+        event.preventDefault();
+        //const opcionsFruita = this.elements["fruitaProporcioAigua"];
+        //const opcionsFruita = this.elements.fruitaProporcioAigua;
+        const opcionsFruita = this.elements.namedItem("fruitaProporcioAigua");
+        const valorFruitaSeleccionada = opcionsFruita.value;
+        if (valorFruitaSeleccionada == "Mango") {
+          alert("Has triat la resposta correcte!");
+        }
+        else {
+          alert("No has triat la resposta correcte.");
+        }
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <h1>Exemples de funcionalitat diversos</h1>
+  <hr>
+
+  <h2>Creació d'ítems en una llista no ordenada manipulant el DOM</h2>
+  <ul id="llistaFruites"></ul>
+  <hr>
+
+  <h2>
+    Creació d'un gestor/oient/subscriptor d'esdeveniment (event handler/listener/subscriber) per a l'esdeveniment copy
+  </h2>
+  <p id="infoConfidencial">
+    Text confidencial.
+  </p>
+  <hr>
+
+  <h2>
+    Valor seleccionat en un camp d'entrada de tipus ràdio
+  </h2>
+  <form method="post">
+    <p>Quina fruita conté una proporció d'aigua més elevada?</p>
+    <p>
+      <input type="radio" name="fruitaProporcioAigua" id="fruitaMango" value="Mango" checked>
+      <label for="fruitaMango"> Mango</label>
+      <input type="radio" name="fruitaProporcioAigua" id="fruitaCaqui" value="Caqui">
+      <label for="fruitaCaqui"> Caqui</label>
+    </p>
+    <input type="submit" value="Enviar la resposta">
+  </form>
+</body>
+
+</html>

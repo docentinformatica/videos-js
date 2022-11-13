@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Inclusió de codi JavaScript en línia</title>
+</head>
+
+<!-- L'esdeveniment DOMContentLoaded no pot usar-se mitjançant la inclusió de codi JavaScript en un element d'HTML5 fent ús de l'atribut d'esdeveniment onDOMContentLoaded, ja que aquest esdeveniment s'implementa només en l'objecte window (objecte arrel del BOM) i l'objecte document (acessible també com a window.document) del DOM. -->
+<!-- <body onDOMContentLoaded="
+  alert('El DOM s\'ha carregat.');
+  document.getElementById('titol').innerText = 'Inclusió de codi JavaScript intern.';
+">  -->
+<!-- <body onDOMContentLoaded="alert('El DOM s\'ha carregat.');"> -->
+
+<body onload="
+  alert('El DOM i la resta de recursos (CSS, imatges, vídeos, ...) s\'han carregat.');
+  document.getElementById('titol').innerText = 'Inclusió de codi JavaScript en línia.';
+">
+  
+  <h1 id="titol">...</h1>
+
+  <button 
+    onclick="
+      this.innerText = 'Botó clicat';
+      this.style.color = 'white';
+      this.style.backgroundColor = '#aa65c3';
+      alert('El botó s\'ha clicat.');
+    ">
+    Botó sense clicar
+  </button>
+  
+  <p>The <strong>DOMContentLoaded</strong> event fires when the initial HTML document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading.</p>
+  
+  <p>The <strong>load</strong> event is fired when the whole page has loaded, including all dependent resources such as stylesheets and images.</p>
+</body>
+
+</html>

@@ -1,0 +1,1 @@
+document.getElementById("titol").innerText = "Inclusió de codi JavaScript extern.";
